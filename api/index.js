@@ -16,6 +16,8 @@ const testingRouter = require('./controllers/testing')
 app.use(cors())
 app.use(express.json())
 
+app.use(express.static('../app/build'))
+
 app.use(loggerMiddleware)
 
 app.use('/api/login', loginRouter)

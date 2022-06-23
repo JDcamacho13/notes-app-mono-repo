@@ -33,7 +33,7 @@ const NoteForm = ({ addNote, handleLogout }) => {
           value={newNote}
           onChange={handleNoteChange}
         />
-        <button type="submit">save</button>
+        <button type='submit'>save</button>
       </form>
       <div>
         <button onClick={handleLogout}>

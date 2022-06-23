@@ -1,24 +1,25 @@
 const mongoose = require('mongoose')
 const Note = require('../models/Note')
 const User = require('../models/User')
-const { initialNotes, api, getAllContentFromNotes, getNewPassHash, loggin } = require('./helpers')
+const { initialNotes, api, getAllContentFromNotes, loggin } = require('./helpers')
 
 jest.setTimeout(10 * 1000)
 
 beforeEach(async () => {
   await Note.deleteMany({})
+  // await User.deleteMany({})
 
-  // save all the notes whit promises but not is sequential
-  // const notesObjects = initialNotes.map(note => new Note(note))
-  // const promises = notesObjects.map(note => note.save())
-  // await Promise.all(promises)
-  const newUser = new User({
-    username: 'JDcamacho',
-    name: 'Daniel',
-    passwordHash: await getNewPassHash('pssw')
-  })
+  // // save all the notes whit promises but not is sequential
+  // // const notesObjects = initialNotes.map(note => new Note(note))
+  // // const promises = notesObjects.map(note => note.save())
+  // // await Promise.all(promises)
+  // const newUser = new User({
+  //   username: 'JDcamacho',
+  //   name: 'Daniel',
+  //   passwordHash: await getNewPassHash('pssw')
+  // })
 
-  await newUser.save()
+  // await newUser.save()
 
   for (const note of initialNotes) {
     const noteObject = new Note(note)
@@ -213,5 +214,6 @@ describe('API notes route PUT', () => {
 
 afterAll(async () => {
   await Note.deleteMany({})
+  await User.deleteMany({})
   mongoose.connection.close()
 })

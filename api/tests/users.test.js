@@ -63,6 +63,5 @@ describe('POST', () => {
 })
 
 afterAll(async () => {
-  await User.deleteMany({})
   mongoose.connection.close()
 })
